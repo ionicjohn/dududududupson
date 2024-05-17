@@ -109,6 +109,7 @@ export default function Navbar() {
           />
         </Tabs>
         <Menu
+          className='clothes-menu'
           anchorEl={anchorEl}
           open={Boolean(anchorEl) && menuId === 'clothes'}
           onClose={handleClose}
@@ -116,57 +117,17 @@ export default function Navbar() {
             onMouseLeave: handleMenuLeave,
             onMouseEnter: () => clearTimeout(), 
           }}
-          sx={{
-            '& .MuiPaper-root': {
-              backgroundColor: '#4d4c4d', 
-            }
-          }}
+          autoFocus={false}
         >
           {[
-          <MenuItem
-          sx={{
-            backgroundColor:'#4d4c4d',
-            color:'white',
-            '&:hover': {
-              backgroundColor:'#676567'
-            }
-          }}
-          key="bluzy">
-            Bluzy
-          </MenuItem>,
-          <MenuItem
-          sx={{
-            backgroundColor:'#4d4c4d',
-            color:'white',
-            '&:hover': {
-              backgroundColor:'#676567'
-            }
-          }}
-          key="koszulki">
-            koszulki
-          </MenuItem>, 
-          <MenuItem
-          sx={{
-            backgroundColor:'#4d4c4d',
-            color:'white',
-            '&:hover': {
-              backgroundColor:'#676567'
-            }
-          }}
-          key="spodnie">
-            spodnie
-          </MenuItem>, 
-          <MenuItem
-          sx={{
-            backgroundColor:'#4d4c4d',
-            color:'white',
-            '&:hover': {
-              backgroundColor:'#676567'
-            }
-          }}
-          key="bielizna">
-            bielizna
-          </MenuItem>,  
+            <MenuItem className="clothes-menu-item" key="buty">buty</MenuItem>,
+            <MenuItem className="clothes-menu-item" key="bluzy">bluzy</MenuItem>,
+            <MenuItem className="clothes-menu-item" key="koszulki">koszulki</MenuItem>,
+            <MenuItem className="clothes-menu-item" key="rekawiczki">rekawiczki</MenuItem>,
+            <MenuItem className="clothes-menu-item" key="majtki">majtki</MenuItem>,
+            <MenuItem className="clothes-menu-item" key="klapki">klapki</MenuItem>,
+            <MenuItem className="clothes-menu-item" key="skarpetki">skarpetki</MenuItem>,
+            <MenuItem className="clothes-menu-item" key="czapki">czapki</MenuItem> 
           ]}
         </Menu>
         <Menu
@@ -178,12 +139,21 @@ export default function Navbar() {
             onMouseLeave: handleMenuLeave,
             onMouseEnter: () => clearTimeout(), 
           }}
+          autoFocus={false}
         >
           {[
-          <MenuItem className="accessories-menu-item" key="cos1">cos1</MenuItem>, 
-          <MenuItem className="accessories-menu-item" key="cos2">cos2</MenuItem>, 
-          <MenuItem className="accessories-menu-item" key="cos3">cos3</MenuItem>, 
-          <MenuItem className="accessories-menu-item" key="cos4">cos4</MenuItem>
+            <MenuItem className="accessories-menu-item" key="kubki">kubki</MenuItem>,
+            <MenuItem className="accessories-menu-item" key="figurki">figurki</MenuItem>,
+            <MenuItem className="accessories-menu-item" key="kawa">kawa</MenuItem>,
+            <MenuItem className="accessories-menu-item" key="energetyki">energetyki</MenuItem>,
+            <MenuItem className="accessories-menu-item" key="alkohol">alkohol</MenuItem>,
+            <MenuItem className="accessories-menu-item" key="bransoletki">bransoletki</MenuItem>,
+            <MenuItem className="accessories-menu-item" key="okularki">okularki</MenuItem>,
+            <MenuItem className="accessories-menu-item" key="pierscionki">pierscionki</MenuItem>,
+            <MenuItem className="accessories-menu-item" key="koguto-pierscionki">koguto pierscionki</MenuItem>,
+            <MenuItem className="accessories-menu-item" key="chainy">chainy</MenuItem>,
+            <MenuItem className="accessories-menu-item" key="przedmioty-legendarne">przedmioty LEGENDARNE</MenuItem>,
+
           ]}
         </Menu>
       </Box>
@@ -240,6 +210,7 @@ export default function Navbar() {
           <AccountBoxIcon />
         </IconButton>
         <Menu
+          className='account-menu' 
           anchorEl={anchorEl}
           open={Boolean(anchorEl) && menuId === 'account'}
           onClose={handleClose}
@@ -250,15 +221,15 @@ export default function Navbar() {
         >
           {isLoggedIn ? (
             [
-              <MenuItem key="my-account" onClick={handleClose}>My account</MenuItem>,
-              <MenuItem key="my-orders" onClick={handleClose}>My orders</MenuItem>,
-              <MenuItem key="settings" onClick={handleClose}>Settings</MenuItem>,
-              <MenuItem key="logout" onClick={toggleLogin}>Logout</MenuItem>
+              <MenuItem className='account-menu-items' key="my-account" onClick={handleClose}>My account</MenuItem>,
+              <MenuItem className='account-menu-items' key="my-orders" onClick={handleClose}>My orders</MenuItem>,
+              <MenuItem className='account-menu-items' key="settings" onClick={handleClose}>Settings</MenuItem>,
+              <MenuItem className='account-menu-items' key="logout" onClick={toggleLogin}>Logout</MenuItem>
             ]
           ) : (
             [
-              <MenuItem key="login" onClick={handleClose}>Login</MenuItem>,
-              <MenuItem key="register" onClick={handleClose}>Register</MenuItem>
+              <MenuItem className='account-menu-items' key="login" onClick={handleClose}>Login</MenuItem>,
+              <MenuItem className='account-menu-items' key="register" onClick={handleClose}>Register</MenuItem>
             ]
           )}
         </Menu>
