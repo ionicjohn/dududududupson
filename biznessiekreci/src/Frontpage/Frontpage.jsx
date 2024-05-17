@@ -1,23 +1,16 @@
-import { useState } from 'react'
-import './Frontpage.css'
-//Produkty bedą zczytywane z bazy danych gdy beda w niej dane
-const products = [{
-  "name": "Tytul1",
-  "description": "Opis1"
-},
-{
-  "name": "Tytul2",
-  "description": "Opis2"
-},
-{
-  "name": "Tytul3",
-  "description": "Opis3"
-}
-]
+import { useState } from 'react';
+import './Frontpage.css';
 
-function Product({ id, name, description, price }) {
+const products = [
+  { "name": "Tytul1", "description": "Opis1" },
+  { "name": "Tytul2", "description": "Opis2" },
+  { "name": "Tytul3", "description": "Opis3" },
+  { "name": "Tytul4", "description": "Opis4" }
+];
+
+function Product({ name, description }) {
   return (
-    <div className='element'>
+    <div className='element'>   
       <h3>{name}</h3>
       <p>{description}</p>
     </div>
@@ -27,16 +20,25 @@ function Product({ id, name, description, price }) {
 function Frontpage() {
   return (
     <>
-      <div className='container'>
-      {products.map(product => (
-        <Product
-          name={product.name}
-          description={product.description}
-        />
-      ))}
+      <div className='containerSlide'>
+        {products.map(product => (
+          <Product
+            key={product.name}
+            name={product.name}
+            description={product.description}
+          />
+        ))}
       </div>
+      {/* <div className='container'>
+      {products.map(product => (
+          <Product
+            name={product.name}
+            description={product.description}
+          />
+        ))}
+      </div> */}
     </>
-  )
+  );
 }
 
-export default Frontpage
+export default Frontpage;

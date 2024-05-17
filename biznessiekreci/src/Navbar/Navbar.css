@@ -12,59 +12,56 @@
     z-index: 1000; 
     background-color: #ede8f5; 
     padding: 10px 20px; 
-  }
+    height: 60px; /* Set the height of the navbar */
+}
 
-.accessories-menu .MuiPaper-root ,.clothes-menu .MuiPaper-root,.account-menu .MuiPaper-root{
+.accessories-menu .MuiPaper-root, .clothes-menu .MuiPaper-root, .account-menu .MuiPaper-root {
     background-color: #e9e8e8;
     color: #407ed6;
 }
 
-.accessories-menu-item,.clothes-menu-item,.account-menu-items{
+.accessories-menu-item, .clothes-menu-item, .account-menu-items {
     background-color: #e9e8e8;
-    color: #407ed6  ;
+    color: #407ed6;
 }
 
-.accessories-menu-item:hover,.clothes-menu-item:hover,.account-menu-items:hover{
+.accessories-menu-item:hover, .clothes-menu-item:hover, .account-menu-items:hover {
     background-color: #676567;
 }
 
 .tabs .MuiTabs-flexContainer {
     border-bottom: none;
-  }
-  
-  .tabs .MuiButtonBase-root:hover,
-  .tabs .MuiButtonBase-root.Mui-selected {
+}
+
+.tabs .MuiButtonBase-root:hover,
+.tabs .MuiButtonBase-root.Mui-selected {
     background-color: #e9e8e8;
     outline: none;
-  }
-  
-  .tabs .MuiButtonBase-root:focus {
-    outline: none;
-  }
-  
-  .tabs .MuiTabs-indicator {
-    background-color: #7091e6;
-  }
+}
 
-.account-iconBtn,.shopping-iconBtn{
+.tabs .MuiButtonBase-root:focus {
+    outline: none;
+}
+
+.tabs .MuiTabs-indicator {
+    background-color: #7091e6;
+}
+
+.account-iconBtn, .shopping-iconBtn {
     color: white;
 }
 
-.account-iconBtn:hover,.shopping-iconBtn:hover{
-    background-color: rgba(255, 255, 255, 0.2) ;
+.account-iconBtn:hover, .shopping-iconBtn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-.account-iconBtn:focus,.shopping-iconBtn:focus{
+.account-iconBtn:focus, .shopping-iconBtn:focus {
     outline: none;
 }
 
-.search-field{
+.search-field {
     width: 200px;
 }
-
-/* .search-field:hover,.search-field:focus{
-    outline: none;
-} */
 
 .search-field .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: #bfbfbf;
@@ -72,11 +69,11 @@
     outline: none;
 }
 
-.tabs-tab,.tabs{
+.tabs-tab, .tabs {
     color: black;
 }
 
 
-  
-  
-  
+.slider {
+    margin-top: 10%;
+}
