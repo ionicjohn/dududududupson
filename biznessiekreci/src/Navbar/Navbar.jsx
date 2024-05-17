@@ -11,6 +11,8 @@ import IconButton from '@mui/material/IconButton';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import './Navbar.css'
+
 
 export default function Navbar() {
   const [value, setValue] = React.useState('one');
@@ -54,14 +56,7 @@ export default function Navbar() {
   };
 
   return (
-    <Box sx={{
-      width: '100%', 
-      display: 'flex', 
-      alignItems: 'center', 
-      padding: '0px', 
-      marginBottom: '2.5%',  
-      justifyContent: 'space-between'
-    }}>
+    <Box className="main-container">
       <img src="././logo.png" alt="Logo" style={{ marginRight: '20px' }} />
       <Box sx={{
         flexGrow: 1,
@@ -122,7 +117,9 @@ export default function Navbar() {
             onMouseEnter: () => clearTimeout(), 
           }}
           sx={{
-            backgroundColor:'#4d4c4d'
+            '& .MuiPaper-root': {
+              backgroundColor: '#4d4c4d', 
+            }
           }}
         >
           {[
@@ -173,6 +170,7 @@ export default function Navbar() {
           ]}
         </Menu>
         <Menu
+          className="accessories-menu"
           anchorEl={anchorEl}
           open={Boolean(anchorEl) && menuId === 'accessories'}
           onClose={handleClose}
@@ -182,10 +180,10 @@ export default function Navbar() {
           }}
         >
           {[
-          <MenuItem key="cos1">cos1</MenuItem>, 
-          <MenuItem key="cos2">cos2</MenuItem>, 
-          <MenuItem key="cos3">cos3</MenuItem>, 
-          <MenuItem key="cos4">cos4</MenuItem>
+          <MenuItem className="accessories-menu-item" key="cos1">cos1</MenuItem>, 
+          <MenuItem className="accessories-menu-item" key="cos2">cos2</MenuItem>, 
+          <MenuItem className="accessories-menu-item" key="cos3">cos3</MenuItem>, 
+          <MenuItem className="accessories-menu-item" key="cos4">cos4</MenuItem>
           ]}
         </Menu>
       </Box>
