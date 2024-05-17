@@ -25,10 +25,11 @@
   margin-right: 0; /* remove margin on the last element */
 }
 .container {
-  margin-top: 10px;
-  display: flex;
-  width: 100vw; /* or you can use a fixed width, e.g., 90vw */
-  max-width: 93vw; /* ensures three elements of 31vw each fit */
-  padding-bottom: 1rem; /* space for scrollbar */
-  box-sizing: border-box;
+  padding-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30vw, 32%)); /* Adjust the minimum and maximum width as needed */
+  gap: 10px; /* spacing between items */
+  width: 100%;
+  max-width: 100%; /* you can adjust this max-width */
+  margin: 0 auto;
 }

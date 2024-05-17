@@ -29,14 +29,14 @@ function Frontpage() {
           />
         ))}
       </div>
-      {/* <div className='container'>
+      <div className='container'>
       {products.map(product => (
           <Product
             name={product.name}
             description={product.description}
           />
         ))}
-      </div> */}
+      </div>
     </>
   );
 }
