@@ -44,6 +44,8 @@ export default function Navbar() {
     setIsLoggedIn(!isLoggedIn);
   };
 
+  const menuOpen = Boolean(anchorEl) && menuId === 'account';
+  
   return (
     <Box className="main-container">
       <img src="././logo.png" alt="Logo" style={{ marginRight: '20px' }} />
@@ -55,20 +57,22 @@ export default function Navbar() {
         <Tabs
           className='tabs'
           value={value}
-          onChange={handleChange}
-          textColor="white"
+          onChange={handleChange} 
           aria-label="tabs example"
         >
           <Tab
+            className='tabs-tab'
             value="one"
             label="Home"
           />
           <Tab
+            className='tabs-tab'
             value="two"
             label="Clothes"
             onClick={(e) => handleClick(e, 'clothes')}
           />
           <Tab
+            className='tabs-tab'
             value="three"
             label="Accessories"
             onClick={(e) => handleClick(e, 'accessories')}
@@ -135,17 +139,22 @@ export default function Navbar() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon sx={{ color: 'white' }} />
+                <SearchIcon sx={{ color: '#bfbfbf' }} />
               </InputAdornment>
             ),
-            style: { color: 'white' }
+            style: { color: 'black' }
           }}
         />
-        <IconButton className='shopping-iconBtn' aria-label="shopping cart" sx={{ color: 'white' }}>
+        <IconButton className='shopping-iconBtn' aria-label="shopping cart" sx={{ color: '#7091e6' }}>
           <ShoppingCartIcon />
         </IconButton>
 
-        <IconButton aria-label="account box" className='account-iconBtn' onClick={(e) => handleClick(e, 'account')} sx={{ color: 'white' }}>
+        <IconButton 
+        aria-label="account box" 
+        className='account-iconBtn' 
+        onClick={(e) => handleClick(e, 'account')} 
+        sx={{ color: menuOpen ? '#3d52a0' : '#7091e6' }}
+        >
           <AccountBoxIcon />
         </IconButton>
 

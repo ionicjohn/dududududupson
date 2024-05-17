@@ -1,15 +1,20 @@
+body{
+  background-color: #ede8f5;
+}
 #root {
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
+    background-color: #ede8f5;
   }
 .container{
   display: flex;
+  background-color: #ede8f5;
 }
 .element{
   width: 31vw;
   padding: 31vh 0;
-  background-color: rebeccapurple;
+  background-color: #3d52a0;
   margin-right: 10px;
   text-align: center;
 }
