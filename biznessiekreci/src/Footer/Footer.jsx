@@ -12,7 +12,7 @@ function Footer() {
   	 		<div class="footerColumnWraper">
   	 			<h4>Info</h4>
   	 			<ul>
-  	 				<li><a href="aboutUs">about us</a></li>
+  	 				<li><a href="aboutUs">AboutUs</a></li>
   	 				<li><a href="404">privacy policy</a></li>
   	 			</ul>
   	 		</div>
