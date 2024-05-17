@@ -10,18 +10,18 @@
     left: 0;
     right: 0;
     z-index: 1000; 
-    background-color: #25262a; 
+    background-color: #ede8f5; 
     padding: 10px 20px; 
   }
 
 .accessories-menu .MuiPaper-root ,.clothes-menu .MuiPaper-root,.account-menu .MuiPaper-root{
-    background-color: #4d4c4d;
-    color: white;
+    background-color: #e9e8e8;
+    color: #407ed6;
 }
 
 .accessories-menu-item,.clothes-menu-item,.account-menu-items{
-    background-color: #4d4c4d;
-    color: white;
+    background-color: #e9e8e8;
+    color: #407ed6  ;
 }
 
 .accessories-menu-item:hover,.clothes-menu-item:hover,.account-menu-items:hover{
@@ -34,7 +34,7 @@
   
   .tabs .MuiButtonBase-root:hover,
   .tabs .MuiButtonBase-root.Mui-selected {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #e9e8e8;
     outline: none;
   }
   
@@ -43,7 +43,7 @@
   }
   
   .tabs .MuiTabs-indicator {
-    background-color: #ec1c64;
+    background-color: #7091e6;
   }
 
 .account-iconBtn,.shopping-iconBtn{
@@ -62,11 +62,21 @@
     width: 200px;
 }
 
-.search-field .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: rgb(236, 28, 100);
-    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+/* .search-field:hover,.search-field:focus{
     outline: none;
-  }
+} */
+
+.search-field .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #bfbfbf;
+    box-shadow: 0 0 5px #bfbfbf;
+    outline: none;
+}
+
+.tabs-tab,.tabs{
+    color: black;
+}
+
+
   
   
   
