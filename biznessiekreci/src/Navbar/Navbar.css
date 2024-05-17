@@ -7,16 +7,16 @@
     justify-content: space-between;
 }
 
-.accessories-menu .MuiPaper-root {
+.accessories-menu .MuiPaper-root ,.clothes-menu .MuiPaper-root,.account-menu .MuiPaper-root{
     background-color: #4d4c4d;
     color: white;
 }
 
-.accessories-menu-item {
+.accessories-menu-item,.clothes-menu-item,.account-menu-items{
     background-color: #4d4c4d;
     color: white;
 }
 
-.accessories-menu-item:hover {
+.accessories-menu-item:hover,.clothes-menu-item:hover,.account-menu-items:hover{
     background-color: #676567;
 }
