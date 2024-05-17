@@ -8,7 +8,6 @@ import Navbar from './Navbar/Navbar.jsx';
 import './index.css'
 import AboutUs from './AboutUS/AboutUs.jsx'
 import NoPage from './NoPage/NoPage.jsx'
-import Footer from './Footer/Footer.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
