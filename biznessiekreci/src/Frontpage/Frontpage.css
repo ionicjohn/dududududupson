@@ -1,0 +1,15 @@
+#root {
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+.container{
+  display: flex;
+}
+.element{
+  width: 31vw;
+  padding: 31vh 0;
+  background-color: rebeccapurple;
+  margin-right: 10px;
+  text-align: center;
+}
