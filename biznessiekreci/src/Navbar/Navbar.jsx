@@ -11,15 +11,13 @@ import IconButton from '@mui/material/IconButton';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import './Navbar.css'
-
+import './Navbar.css';
 
 export default function Navbar() {
   const [value, setValue] = React.useState('one');
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [menuId, setMenuId] = React.useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  // const [hoveredTab, setHoveredTab] = useState(null);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -28,26 +26,17 @@ export default function Navbar() {
   const handleClose = () => {
     setAnchorEl(null);
     setMenuId(null);
-    // setHoveredTab(null);
   };
 
-  const handleMouseEnter = (event, id) => {
+  const handleClick = (event, id) => {
     setAnchorEl(event.currentTarget);
     setMenuId(id);
-    // setHoveredTab(id);
-  };
-
-  const handleMouseLeave = () => {
-    setAnchorEl(null);
-    setMenuId(null);
-    // setHoveredTab(null);
   };
 
   const handleMenuLeave = () => {
     setTimeout(() => {
       setAnchorEl(null);
       setMenuId(null);
-      // setHoveredTab(null);
     }, 200);
   };
 
@@ -64,48 +53,25 @@ export default function Navbar() {
         justifyContent: 'center'
       }}>
         <Tabs
+          className='tabs'
           value={value}
-          onChange={handleChange} 
+          onChange={handleChange}
           textColor="white"
           aria-label="tabs example"
-          sx={{
-            '.MuiTabs-flexContainer': {
-              borderBottom: 'none', 
-            },
-            '.MuiButtonBase-root': {
-              '&:hover, &.Mui-selected': {
-                backgroundColor: 'rgba(255, 255, 255, 0.1)', 
-                outline: 'none', 
-              },
-              '&:focus': {
-                outline: 'none', 
-              },
-              // ...(hoveredTab && {
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)', 
-                }
-              // }),
-            },
-            '.MuiTabs-indicator': {
-              backgroundColor: '#ec1c64', 
-            }
-          }}
         >
-          <Tab 
-            value="one" 
+          <Tab
+            value="one"
             label="Home"
           />
-          <Tab 
-            value="two" 
+          <Tab
+            value="two"
             label="Clothes"
-            onMouseEnter={(e) => handleMouseEnter(e, 'clothes')}
-            // onMouseLeave={handleMouseLeave}
+            onClick={(e) => handleClick(e, 'clothes')}
           />
-          <Tab 
-            value="three" 
+          <Tab
+            value="three"
             label="Accessories"
-            onMouseEnter={(e) => handleMouseEnter(e, 'accessories')}
-            // onMouseLeave={handleMouseLeave}
+            onClick={(e) => handleClick(e, 'accessories')}
           />
         </Tabs>
         <Menu
@@ -115,7 +81,7 @@ export default function Navbar() {
           onClose={handleClose}
           MenuListProps={{
             onMouseLeave: handleMenuLeave,
-            onMouseEnter: () => clearTimeout(), 
+            onMouseEnter: () => clearTimeout(),
           }}
           autoFocus={false}
         >
@@ -127,7 +93,7 @@ export default function Navbar() {
             <MenuItem className="clothes-menu-item" key="majtki">majtki</MenuItem>,
             <MenuItem className="clothes-menu-item" key="klapki">klapki</MenuItem>,
             <MenuItem className="clothes-menu-item" key="skarpetki">skarpetki</MenuItem>,
-            <MenuItem className="clothes-menu-item" key="czapki">czapki</MenuItem> 
+            <MenuItem className="clothes-menu-item" key="czapki">czapki</MenuItem>
           ]}
         </Menu>
         <Menu
@@ -137,7 +103,7 @@ export default function Navbar() {
           onClose={handleClose}
           MenuListProps={{
             onMouseLeave: handleMenuLeave,
-            onMouseEnter: () => clearTimeout(), 
+            onMouseEnter: () => clearTimeout(),
           }}
           autoFocus={false}
         >
@@ -153,7 +119,6 @@ export default function Navbar() {
             <MenuItem className="accessories-menu-item" key="koguto-pierscionki">koguto pierscionki</MenuItem>,
             <MenuItem className="accessories-menu-item" key="chainy">chainy</MenuItem>,
             <MenuItem className="accessories-menu-item" key="przedmioty-legendarne">przedmioty LEGENDARNE</MenuItem>,
-
           ]}
         </Menu>
       </Box>
@@ -163,60 +128,35 @@ export default function Navbar() {
         alignItems: 'center'
       }}>
         <TextField
+          className='search-field'
           type="search"
           variant="outlined"
           placeholder="Search..."
-          sx={{
-            width: '200px', 
-            '& .MuiOutlinedInput-root': {
-              '&.Mui-focused fieldset': {
-                borderColor: 'rgb(236,28,100)', 
-                boxShadow: '0 0 5px rgba(255, 0, 0, 0.5)', 
-                outline: 'none' 
-              }
-            }
-          }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon sx={{ color: 'white'}}/>
+                <SearchIcon sx={{ color: 'white' }} />
               </InputAdornment>
             ),
-            style: {color:'white'}
+            style: { color: 'white' }
           }}
         />
-        <IconButton aria-label="shopping cart" sx={{
-          color: 'white',
-          '&:hover': {
-            backgroundColor: 'rgba(255, 255, 255, 0.2)'
-          },
-          '&:focus': {
-            outline: 'none' 
-          }
-        }}>
+        <IconButton className='shopping-iconBtn' aria-label="shopping cart" sx={{ color: 'white' }}>
           <ShoppingCartIcon />
         </IconButton>
-        <IconButton aria-label="account box" 
-          sx={{
-            color: 'white',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.2)'
-            },
-            '&:focus': {
-              outline: 'none'
-            }
-          }}
-          onMouseEnter={(e) => handleMouseEnter(e, 'account')}>
+
+        <IconButton aria-label="account box" className='account-iconBtn' onClick={(e) => handleClick(e, 'account')} sx={{ color: 'white' }}>
           <AccountBoxIcon />
         </IconButton>
+
         <Menu
-          className='account-menu' 
+          className='account-menu'
           anchorEl={anchorEl}
           open={Boolean(anchorEl) && menuId === 'account'}
           onClose={handleClose}
           MenuListProps={{
             onMouseLeave: handleMenuLeave,
-            onMouseEnter: () => clearTimeout(), 
+            onMouseEnter: () => clearTimeout(),
           }}
         >
           {isLoggedIn ? (
