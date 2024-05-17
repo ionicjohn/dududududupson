@@ -16,7 +16,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from backend_sklepu.views import (
+    UserCreateView,
+    AddressListCreateView,
+    AddressRetrieveUpdateDestroyView,
+    ProductListCreateView,
+    ProductRetrieveUpdateDestroyView,
+)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # User endpoints
+    path('users/create/', UserCreateView.as_view(), name='user-create'),
+
+    # Address endpoints
+    path('addresses/', AddressListCreateView.as_view(), name='address-list-create'),
+    path('addresses/<int:pk>/', AddressRetrieveUpdateDestroyView.as_view(), name='address-retrieve-update-destroy'),
+
+    # Product endpoints
+    path('products/', ProductListCreateView.as_view(), name='product-list-create'),
+    path('products/<int:pk>/', ProductRetrieveUpdateDestroyView.as_view(), name='product-retrieve-update-destroy'),
 ]
