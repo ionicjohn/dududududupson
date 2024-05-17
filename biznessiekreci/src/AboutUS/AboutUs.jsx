@@ -28,11 +28,6 @@ function AboutUs() {
             </ul>
         </div>
     </section>
-
-    <section id="our-Team">
-        <h2>Our Member</h2>
-        
-    </section>
     </>
   )
 }

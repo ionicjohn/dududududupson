@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './Footer.css'
+import { Link } from 'react-router-dom'
 import { DiscordLogo,  InstagramLogo } from '../assets/LogosSVG'
 
 function Footer() {
@@ -12,7 +13,7 @@ function Footer() {
   	 		<div class="footerColumnWraper">
   	 			<h4>Info</h4>
   	 			<ul>
-  	 				<li><a href="aboutUs">AboutUs</a></li>
+				    <li><a href="aboutUs">AboutUs</a></li>
   	 				<li><a href="404">privacy policy</a></li>
   	 			</ul>
   	 		</div>
@@ -25,7 +26,9 @@ function Footer() {
   	 		<div class="footerColumnWraper">
   	 			<h4>Shop</h4>
   	 			<ul>
-  	 				<li><a href="404">Will Be Added Soon</a></li>
+  	 				<li><a href="clothes">Ubrania</a></li>
+  	 				<li><a href="accessories">Akcesoria</a></li>
+  	 				<li><a href="food">Zywnosc</a></li>
   	 			</ul>
   	 		</div>
   	 		<div class="footerColumnWraper">
