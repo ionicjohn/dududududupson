@@ -14,13 +14,11 @@ import MenuItem from '@mui/material/MenuItem';
 import './Navbar.css'
 import { Link } from 'react-router-dom';
 
-
 export default function Navbar() {
   const [value, setValue] = React.useState('one');
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [menuId, setMenuId] = React.useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  // const [hoveredTab, setHoveredTab] = useState(null);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -29,26 +27,17 @@ export default function Navbar() {
   const handleClose = () => {
     setAnchorEl(null);
     setMenuId(null);
-    // setHoveredTab(null);
   };
 
-  const handleMouseEnter = (event, id) => {
+  const handleClick = (event, id) => {
     setAnchorEl(event.currentTarget);
     setMenuId(id);
-    // setHoveredTab(id);
-  };
-
-  const handleMouseLeave = () => {
-    setAnchorEl(null);
-    setMenuId(null);
-    // setHoveredTab(null);
   };
 
   const handleMenuLeave = () => {
     setTimeout(() => {
       setAnchorEl(null);
       setMenuId(null);
-      // setHoveredTab(null);
     }, 200);
   };
 
@@ -56,6 +45,8 @@ export default function Navbar() {
     setIsLoggedIn(!isLoggedIn);
   };
 
+  const menuOpen = Boolean(anchorEl) && menuId === 'account';
+  
   return (
     <Box className="main-container">
       <img src="././logo.png" alt="Logo" style={{ marginRight: '20px' }} />
@@ -65,47 +56,28 @@ export default function Navbar() {
         justifyContent: 'center'
       }}>
         <Tabs
+          className='tabs'
           value={value}
           onChange={handleChange} 
-          textColor="white"
           aria-label="tabs example"
-          sx={{
-            '.MuiTabs-flexContainer': {
-              borderBottom: 'none', 
-            },
-            '.MuiButtonBase-root': {
-              '&:hover, &.Mui-selected': {
-                backgroundColor: 'rgba(255, 255, 255, 0.1)', 
-                outline: 'none', 
-              },
-              '&:focus': {
-                outline: 'none', 
-              },
-              // ...(hoveredTab && {
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)', 
-                }
-              // }),
-            },
-            '.MuiTabs-indicator': {
-              backgroundColor: '#ec1c64', 
-            }
-          }}
         >
-          <Tab 
-            value="one" 
+          <Tab
+            className='tabs-tab'
+            value="one"
             label="Home"
             href='/home'
           />
-          <Tab 
-            value="two" 
+          <Tab
+            className='tabs-tab'
+            value="two"
             label="Clothes"
             href='/clothes'
             onMouseEnter={(e) => handleMouseEnter(e, 'clothes')}
             // onMouseLeave={handleMouseLeave}
           />
-          <Tab 
-            value="three" 
+          <Tab
+            className='tabs-tab'
+            value="three"
             label="Accessories"
             href='/accessories'
             onMouseEnter={(e) => handleMouseEnter(e, 'accessories')}
@@ -126,7 +98,7 @@ export default function Navbar() {
           onClose={handleClose}
           MenuListProps={{
             onMouseLeave: handleMenuLeave,
-            onMouseEnter: () => clearTimeout(), 
+            onMouseEnter: () => clearTimeout(),
           }}
           autoFocus={false}
         >
@@ -148,7 +120,7 @@ export default function Navbar() {
           onClose={handleClose}
           MenuListProps={{
             onMouseLeave: handleMenuLeave,
-            onMouseEnter: () => clearTimeout(), 
+            onMouseEnter: () => clearTimeout(),
           }}
           autoFocus={false}
         >
@@ -189,60 +161,40 @@ export default function Navbar() {
         alignItems: 'center'
       }}>
         <TextField
+          className='search-field'
           type="search"
           variant="outlined"
           placeholder="Search..."
-          sx={{
-            width: '200px', 
-            '& .MuiOutlinedInput-root': {
-              '&.Mui-focused fieldset': {
-                borderColor: 'rgb(236,28,100)', 
-                boxShadow: '0 0 5px rgba(255, 0, 0, 0.5)', 
-                outline: 'none' 
-              }
-            }
-          }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon sx={{ color: 'white'}}/>
+                <SearchIcon sx={{ color: '#bfbfbf' }} />
               </InputAdornment>
             ),
-            style: {color:'white'}
+            style: { color: 'black' }
           }}
         />
-        <IconButton aria-label="shopping cart" sx={{
-          color: 'white',
-          '&:hover': {
-            backgroundColor: 'rgba(255, 255, 255, 0.2)'
-          },
-          '&:focus': {
-            outline: 'none' 
-          }
-        }}>
+        <IconButton className='shopping-iconBtn' aria-label="shopping cart" sx={{ color: '#7091e6' }}>
           <ShoppingCartIcon />
         </IconButton>
-        <IconButton aria-label="account box" 
-          sx={{
-            color: 'white',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.2)'
-            },
-            '&:focus': {
-              outline: 'none'
-            }
-          }}
-          onMouseEnter={(e) => handleMouseEnter(e, 'account')}>
+
+        <IconButton 
+        aria-label="account box" 
+        className='account-iconBtn' 
+        onClick={(e) => handleClick(e, 'account')} 
+        sx={{ color: menuOpen ? '#3d52a0' : '#7091e6' }}
+        >
           <AccountBoxIcon />
         </IconButton>
+
         <Menu
-          className='account-menu' 
+          className='account-menu'
           anchorEl={anchorEl}
           open={Boolean(anchorEl) && menuId === 'account'}
           onClose={handleClose}
           MenuListProps={{
             onMouseLeave: handleMenuLeave,
-            onMouseEnter: () => clearTimeout(), 
+            onMouseEnter: () => clearTimeout(),
           }}
         >
           {isLoggedIn ? (
