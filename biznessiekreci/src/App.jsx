@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client';
 import Frontpage from './Frontpage/Frontpage.jsx'
 import Footer from './Footer/Footer.jsx'
 import Navbar from './Navbar/Navbar.jsx';

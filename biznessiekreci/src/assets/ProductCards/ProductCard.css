@@ -1,0 +1,67 @@
+.card {
+    max-width: 24rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px
+    rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.card-content {
+  margin-top: 1.5rem;
+}
+
+.card-heading {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.card p {
+  margin-bottom: 0.75rem;
+  color: #e0e0e0;
+}
+
+.card-price {
+  color: #1a73e8;
+  font-size: 1.5rem;
+}
+
+.card-divider {
+  margin: 0;
+  border: none;
+  border-top: 1px solid #e0e0e0;
+}
+
+.card-footer {
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-solid {
+  background-color: #1a73e8;
+  color: #fff;
+  border: none;
+}
+
+.button-ghost {
+  background-color: transparent;
+  color: #1a73e8;
+  border: 1px solid #1a73e8;
+}
+  

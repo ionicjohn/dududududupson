@@ -11,7 +11,8 @@ import IconButton from '@mui/material/IconButton';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import './Navbar.css';
+import './Navbar.css'
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [value, setValue] = React.useState('one');
@@ -64,18 +65,30 @@ export default function Navbar() {
             className='tabs-tab'
             value="one"
             label="Home"
+            href='/home'
           />
           <Tab
             className='tabs-tab'
             value="two"
             label="Clothes"
-            onClick={(e) => handleClick(e, 'clothes')}
+            href='/clothes'
+            onMouseEnter={(e) => handleMouseEnter(e, 'clothes')}
+            // onMouseLeave={handleMouseLeave}
           />
           <Tab
             className='tabs-tab'
             value="three"
             label="Accessories"
-            onClick={(e) => handleClick(e, 'accessories')}
+            href='/accessories'
+            onMouseEnter={(e) => handleMouseEnter(e, 'accessories')}
+            // onMouseLeave={handleMouseLeave}
+          />
+          <Tab 
+            value="four" 
+            label="Food"
+            href='/food'
+            onMouseEnter={(e) => handleMouseEnter(e, 'food')}
+            // onMouseLeave={handleMouseLeave}
           />
         </Tabs>
         <Menu
@@ -90,14 +103,14 @@ export default function Navbar() {
           autoFocus={false}
         >
           {[
-            <MenuItem className="clothes-menu-item" key="buty">buty</MenuItem>,
-            <MenuItem className="clothes-menu-item" key="bluzy">bluzy</MenuItem>,
-            <MenuItem className="clothes-menu-item" key="koszulki">koszulki</MenuItem>,
-            <MenuItem className="clothes-menu-item" key="rekawiczki">rekawiczki</MenuItem>,
-            <MenuItem className="clothes-menu-item" key="majtki">majtki</MenuItem>,
-            <MenuItem className="clothes-menu-item" key="klapki">klapki</MenuItem>,
-            <MenuItem className="clothes-menu-item" key="skarpetki">skarpetki</MenuItem>,
-            <MenuItem className="clothes-menu-item" key="czapki">czapki</MenuItem>
+            <a href='/clothes#buty'><MenuItem className="clothes-menu-item" key="buty">buty</MenuItem></a>,
+            <a href='/clothes#bluzy'><MenuItem className="clothes-menu-item" key="bluzy">bluzy</MenuItem></a>,
+            <a href='/clothes#koszulki'><MenuItem className="clothes-menu-item" key="koszulki">koszulki</MenuItem></a>,
+            <a href='/clothes#rekawiczki'><MenuItem className="clothes-menu-item" key="rekawiczki">rekawiczki</MenuItem></a>,
+            <a href='/clothes#majtki'><MenuItem className="clothes-menu-item" key="majtki">majtki</MenuItem></a>,
+            <a href='/clothes#klapki'><MenuItem className="clothes-menu-item" key="klapki">klapki</MenuItem></a>,
+            <a href='/clothes#skarpetki'><MenuItem className="clothes-menu-item" key="skarpetki">skarpetki</MenuItem></a>,
+            <a href='/clothes#czapki'><MenuItem className="clothes-menu-item" key="czapki">czapki</MenuItem> </a>
           ]}
         </Menu>
         <Menu
@@ -112,17 +125,33 @@ export default function Navbar() {
           autoFocus={false}
         >
           {[
-            <MenuItem className="accessories-menu-item" key="kubki">kubki</MenuItem>,
-            <MenuItem className="accessories-menu-item" key="figurki">figurki</MenuItem>,
-            <MenuItem className="accessories-menu-item" key="kawa">kawa</MenuItem>,
-            <MenuItem className="accessories-menu-item" key="energetyki">energetyki</MenuItem>,
-            <MenuItem className="accessories-menu-item" key="alkohol">alkohol</MenuItem>,
-            <MenuItem className="accessories-menu-item" key="bransoletki">bransoletki</MenuItem>,
-            <MenuItem className="accessories-menu-item" key="okularki">okularki</MenuItem>,
-            <MenuItem className="accessories-menu-item" key="pierscionki">pierscionki</MenuItem>,
-            <MenuItem className="accessories-menu-item" key="koguto-pierscionki">koguto pierscionki</MenuItem>,
-            <MenuItem className="accessories-menu-item" key="chainy">chainy</MenuItem>,
-            <MenuItem className="accessories-menu-item" key="przedmioty-legendarne">przedmioty LEGENDARNE</MenuItem>,
+            <a href='/accessories#okularki'><MenuItem className="accessories-menu-item" key="okularki">okularki</MenuItem></a>,
+            <a href='/accessories#bransoletki'><MenuItem className="accessories-menu-item" key="bransoletki">bransoletki</MenuItem></a>,
+            <a href='/accessories#pierscionki'><MenuItem className="accessories-menu-item" key="pierscionki">pierscionki</MenuItem></a>,
+            <a href='/accessories#kogutoPierscionki'><MenuItem className="accessories-menu-item" key="koguto-pierscionki">koguto pierscionki</MenuItem></a>,
+            <a href='/accessories#chainy'><MenuItem className="accessories-menu-item" key="chainy">chainy</MenuItem></a>,
+            <a href='/accessories#kubki'><MenuItem className="accessories-menu-item" key="kubki">kubki</MenuItem></a>,
+            <a href='/accessories#figurki'><MenuItem className="accessories-menu-item" key="figurki">figurki</MenuItem></a>,
+            <a href='/accessories#legendarne'><MenuItem className="accessories-menu-item" key="przedmioty-legendarne">przedmioty LEGENDARNE</MenuItem></a>,
+
+          ]}
+        </Menu>
+        <Menu
+          className="food-menu"
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl) && menuId === 'food'}
+          onClose={handleClose}
+          MenuListProps={{
+            onMouseLeave: handleMenuLeave,
+            onMouseEnter: () => clearTimeout(), 
+          }}
+          autoFocus={false}
+        >
+          {[
+            <a href='/food#kawa'><MenuItem className="food-menu-item" key="kawa">kawa</MenuItem></a>,
+            <a href='/food#kenergetyki'><MenuItem className="food-menu-item" key="energetyki">energetyki</MenuItem></a>,
+            <a href='/food#kalkohol'><MenuItem className="food-menu-item" key="alkohol">alkohol</MenuItem></a>,
+
           ]}
         </Menu>
       </Box>
