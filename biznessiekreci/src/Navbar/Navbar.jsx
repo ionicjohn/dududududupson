@@ -71,24 +71,24 @@ export default function Navbar() {
             className='tabs-tab'
             value="two"
             label="Clothes"
-            href='/clothes'
+            //href='/clothes'
             onMouseEnter={(e) => handleMouseEnter(e, 'clothes')}
-            // onMouseLeave={handleMouseLeave}
+            //onMouseLeave={handleMouseLeave}
           />
           <Tab
             className='tabs-tab'
             value="three"
             label="Accessories"
-            href='/accessories'
+            //href='/accessories'
             onMouseEnter={(e) => handleMouseEnter(e, 'accessories')}
-            // onMouseLeave={handleMouseLeave}
+            //onMouseLeave={handleMouseLeave}
           />
           <Tab 
             value="four" 
             label="Food"
-            href='/food'
+            //href='/food'
             onMouseEnter={(e) => handleMouseEnter(e, 'food')}
-            // onMouseLeave={handleMouseLeave}
+            //onMouseLeave={handleMouseLeave}
           />
         </Tabs>
         <Menu
