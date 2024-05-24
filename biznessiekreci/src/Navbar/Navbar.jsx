@@ -12,16 +12,57 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import './Navbar.css'
-import { Link } from 'react-router-dom';
+
+const categories = [
+  {
+    id: 'clothes',
+    name: 'Clothes',
+    subCategories: [
+      { id: 1, name: "buty" },
+      { id: 2, name: "bluzy" },
+      { id: 3, name: "koszulki" },
+      { id: 4, name: "rekawiczki" },
+      { id: 5, name: "majtki" },
+      { id: 6, name: "klapki" },
+      { id: 7, name: "skarpetki" },
+      { id: 8, name: "czapki" }
+    ]
+  },
+  {
+    id: 'accessories',
+    name: 'Accessories',
+    subCategories: [
+      { id: 1, name: "okularki" },
+      { id: 2, name: "bransoletki" },
+      { id: 3, name: "pierscionki" },
+      { id: 4, name: "koguto pierscionki" },
+      { id: 5, name: "chainy" },
+      { id: 6, name: "kubki" },
+      { id: 7, name: "figurki" },
+      { id: 8, name: "przedmioty LEGENDARNE" }
+    ]
+  },
+  {
+    id: 'food',
+    name: 'Food',
+    subCategories: [
+      { id: 1, name: "kawa" },
+      { id: 2, name: "energetyki" },
+      { id: 3, name: "alkohol" }
+    ]
+  }
+];
 
 export default function Navbar() {
-  const [value, setValue] = React.useState('one');
+  const [value, setValue] = React.useState('');
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [menuId, setMenuId] = React.useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [cartItems, setCartItems] = useState([]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    setMenuId(newValue);
   };
 
   const handleClose = () => {
@@ -31,7 +72,7 @@ export default function Navbar() {
 
   const handleClick = (event, id) => {
     setAnchorEl(event.currentTarget);
-    setMenuId(id);
+    setMenuId(id === value ? null : id);
   };
 
   const handleMenuLeave = () => {
@@ -45,8 +86,17 @@ export default function Navbar() {
     setIsLoggedIn(!isLoggedIn);
   };
 
-  const menuOpen = Boolean(anchorEl) && menuId === 'account';
-  
+  const menuOpen = Boolean(anchorEl) && menuId !== null;
+
+  const addToCart = (item) => {
+    setCartItems([...cartItems, item]);
+  };
+
+  const handleCartClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    setMenuId('cart');
+  };
+
   return (
     <Box className="main-container">
       <img src="././logo.png" alt="Logo" style={{ marginRight: '20px' }} />
@@ -61,99 +111,36 @@ export default function Navbar() {
           onChange={handleChange} 
           aria-label="tabs example"
         >
-          <Tab
-            className='tabs-tab'
-            value="one"
-            label="Home"
-            href='/home'
-          />
-          <Tab
-            className='tabs-tab'
-            value="two"
-            label="Clothes"
-            //href='/clothes'
-            onMouseEnter={(e) => handleMouseEnter(e, 'clothes')}
-            //onMouseLeave={handleMouseLeave}
-          />
-          <Tab
-            className='tabs-tab'
-            value="three"
-            label="Accessories"
-            //href='/accessories'
-            onMouseEnter={(e) => handleMouseEnter(e, 'accessories')}
-            //onMouseLeave={handleMouseLeave}
-          />
-          <Tab 
-            value="four" 
-            label="Food"
-            //href='/food'
-            onMouseEnter={(e) => handleMouseEnter(e, 'food')}
-            //onMouseLeave={handleMouseLeave}
-          />
+          {categories.map(category => (
+            <Tab
+              key={category.id}
+              className='tabs-tab'
+              value={category.id}
+              label={category.name}
+              onClick={(e) => handleClick(e, category.id)}
+            />
+          ))}
         </Tabs>
-        <Menu
-          className='clothes-menu'
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl) && menuId === 'clothes'}
-          onClose={handleClose}
-          MenuListProps={{
-            onMouseLeave: handleMenuLeave,
-            onMouseEnter: () => clearTimeout(),
-          }}
-          autoFocus={false}
-        >
-          {[
-            <a href='/clothes#buty'><MenuItem className="clothes-menu-item" key="buty">buty</MenuItem></a>,
-            <a href='/clothes#bluzy'><MenuItem className="clothes-menu-item" key="bluzy">bluzy</MenuItem></a>,
-            <a href='/clothes#koszulki'><MenuItem className="clothes-menu-item" key="koszulki">koszulki</MenuItem></a>,
-            <a href='/clothes#rekawiczki'><MenuItem className="clothes-menu-item" key="rekawiczki">rekawiczki</MenuItem></a>,
-            <a href='/clothes#majtki'><MenuItem className="clothes-menu-item" key="majtki">majtki</MenuItem></a>,
-            <a href='/clothes#klapki'><MenuItem className="clothes-menu-item" key="klapki">klapki</MenuItem></a>,
-            <a href='/clothes#skarpetki'><MenuItem className="clothes-menu-item" key="skarpetki">skarpetki</MenuItem></a>,
-            <a href='/clothes#czapki'><MenuItem className="clothes-menu-item" key="czapki">czapki</MenuItem> </a>
-          ]}
-        </Menu>
-        <Menu
-          className="accessories-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl) && menuId === 'accessories'}
-          onClose={handleClose}
-          MenuListProps={{
-            onMouseLeave: handleMenuLeave,
-            onMouseEnter: () => clearTimeout(),
-          }}
-          autoFocus={false}
-        >
-          {[
-            <a href='/accessories#okularki'><MenuItem className="accessories-menu-item" key="okularki">okularki</MenuItem></a>,
-            <a href='/accessories#bransoletki'><MenuItem className="accessories-menu-item" key="bransoletki">bransoletki</MenuItem></a>,
-            <a href='/accessories#pierscionki'><MenuItem className="accessories-menu-item" key="pierscionki">pierscionki</MenuItem></a>,
-            <a href='/accessories#kogutoPierscionki'><MenuItem className="accessories-menu-item" key="koguto-pierscionki">koguto pierscionki</MenuItem></a>,
-            <a href='/accessories#chainy'><MenuItem className="accessories-menu-item" key="chainy">chainy</MenuItem></a>,
-            <a href='/accessories#kubki'><MenuItem className="accessories-menu-item" key="kubki">kubki</MenuItem></a>,
-            <a href='/accessories#figurki'><MenuItem className="accessories-menu-item" key="figurki">figurki</MenuItem></a>,
-            <a href='/accessories#legendarne'><MenuItem className="accessories-menu-item" key="przedmioty-legendarne">przedmioty LEGENDARNE</MenuItem></a>,
-
-          ]}
-        </Menu>
-        <Menu
-          className="food-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl) && menuId === 'food'}
-          onClose={handleClose}
-          MenuListProps={{
-            onMouseLeave: handleMenuLeave,
-            onMouseEnter: () => clearTimeout(), 
-          }}
-          autoFocus={false}
-        >
-          {[
-            <a href='/food#kawa'><MenuItem className="food-menu-item" key="kawa">kawa</MenuItem></a>,
-            <a href='/food#kenergetyki'><MenuItem className="food-menu-item" key="energetyki">energetyki</MenuItem></a>,
-            <a href='/food#kalkohol'><MenuItem className="food-menu-item" key="alkohol">alkohol</MenuItem></a>,
-
-          ]}
-        </Menu>
+        {categories.map(category => (
+          <Menu
+            key={category.id}
+            className={`${category.id}-menu`}
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl) && menuId === category.id}
+            onClose={handleClose}
+            MenuListProps={{
+              onMouseLeave: handleMenuLeave,
+              onMouseEnter: () => clearTimeout(),
+            }}
+            autoFocus={false}
+          >
+            {category.subCategories.map(subCategory => (
+              <a key={subCategory.id} href={`/${category.id}#${subCategory.id}`}>
+                <MenuItem className={`${category.id}-menu-item`} key={subCategory.id}>{subCategory.name}</MenuItem>
+              </a>
+            ))}
+          </Menu>
+        ))}
       </Box>
 
       <Box sx={{
@@ -174,15 +161,15 @@ export default function Navbar() {
             style: { color: 'black' }
           }}
         />
-        <IconButton className='shopping-iconBtn' aria-label="shopping cart" sx={{ color: '#7091e6' }}>
+        <IconButton className='shopping-iconBtn' aria-label="shopping cart" sx={{ color: '#7091e6' }} onClick={handleCartClick}>
           <ShoppingCartIcon />
         </IconButton>
 
         <IconButton 
-        aria-label="account box" 
-        className='account-iconBtn' 
-        onClick={(e) => handleClick(e, 'account')} 
-        sx={{ color: menuOpen ? '#3d52a0' : '#7091e6' }}
+          aria-label="account box" 
+          className='account-iconBtn' 
+          onClick={(e) => handleClick(e, 'account')} 
+          sx={{ color: menuOpen ? '#3d52a0' : '#7091e6' }}
         >
           <AccountBoxIcon />
         </IconButton>
@@ -209,6 +196,32 @@ export default function Navbar() {
               <MenuItem className='account-menu-items' key="login" onClick={handleClose}>Login</MenuItem>,
               <MenuItem className='account-menu-items' key="register" onClick={handleClose}>Register</MenuItem>
             ]
+          )}
+        </Menu>
+
+        <Menu
+          className='cart-menu'
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl) && menuId === 'cart'}
+          onClose={handleClose}
+          MenuListProps={{
+            onMouseLeave: handleMenuLeave,
+            onMouseEnter: () => clearTimeout(),
+          }}
+        >
+          {cartItems.length > 0 ? (
+            <>
+              {cartItems.map((item, index) => (
+                <MenuItem key={index} className='cart-menu-item'>
+                  {item.name} - ${item.price}
+                </MenuItem>
+              ))}
+              <MenuItem className='cart-menu-item'>
+                <button onClick={() => alert('Proceeding to purchase')}>Proceed to Purchase</button>
+              </MenuItem>
+            </>
+          ) : (
+            <MenuItem className='cart-menu-item'>Cart is empty</MenuItem>
           )}
         </Menu>
       </Box>

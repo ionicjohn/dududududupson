@@ -1,7 +1,12 @@
 import React from 'react';
 import './ProductCard.css';
 
-function ProductCard({id, name, category, subCategory, description, price, img, altPhoto}){
+function ProductCard({id, name, categoryName, categoryId, subCategoryId, subCategory, description, price, vat, img, altPhoto, addToCart }){
+  const handleAddToCart = () => {
+    const product = { id, name, categoryName, categoryId, subCategoryId, subCategory, description, price, vat, img, altPhoto };
+    addToCart(product);
+  };
+  
     return (
         <>
         <div className="card">
@@ -21,7 +26,7 @@ function ProductCard({id, name, category, subCategory, description, price, img, 
       </div>
       <hr className="card-divider" />
       <div className="card-footer">
-        <button className="button button-solid">Buy now</button>
+        <button className="button button-solid" onClick={handleAddToCart}>Buy now</button>
         <button className="button button-ghost">Add to cart</button>
       </div>
         </div>
